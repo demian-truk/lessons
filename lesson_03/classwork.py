@@ -78,7 +78,7 @@ print(result)
 
 Exercise #7
 
-import math                                                                                (
+import math
 
 size = 3                                                                                   
 list = [size * 4, size * size, math.sqrt(2) * size]                                            
