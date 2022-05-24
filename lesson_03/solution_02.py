@@ -14,5 +14,3 @@ for i in range(5):
 print("Deposit profitability:", deposit_amount)
 
 Deposit profitability: 4162.9983
-
-
