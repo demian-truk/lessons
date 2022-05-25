@@ -7,8 +7,7 @@ deposit_bonus = 120
 
 # calculation of deposit profitability
 
-for i in range(5):
-    # 5 == deposit_term
+for i in range(5):    # 5 == deposit_term
     deposit_amount += deposit_amount * percentage_payment + deposit_bonus
 
 print("Deposit profitability:", deposit_amount)
