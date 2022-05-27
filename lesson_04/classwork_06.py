@@ -3,22 +3,20 @@
 Также вывести количество x этих чисел.
 """
 
-n = int(input("Введите первое число: "))
-m = int(input("Введите второе число: "))
+n = int(input("Enter first number: "))
+m = int(input("Enter second number: "))
 new_list = []
 
-# find prime numbers
-
+# find primes
 for number in range(n, m+1):
     if number > 1:
-        for num in range(2, number):
-            if number % num == 0:
+        for divider in range(2, number):
+            if number % divider == 0:
                 break
         else:
             new_list.append(number)
-print("Список всех простых чисел в диапазоне:", new_list)
+print("List of all primes in the current range:", new_list)
 
-# output amount of prime numbers
-
-x = len(new_list)
-print("Количество простых чисел:", x)
+# output amount of primes
+amount_of_primes = len(new_list)
+print("Amount of primes:", amount_of_primes)
