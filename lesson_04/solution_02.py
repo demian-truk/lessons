@@ -3,20 +3,17 @@
 Палиндром - это слово или фраза, которые одинаково читаются слева направо и справа налево.
 """
 
-my_str = str(input("Введите слово или фразу: "))
+my_str = str(input("Enter word or phrase: "))
 new_str = my_str.replace(" ", "")
-new_str = my_str.lower()
 
 # check for palindrome using construction [::-1]
-
 if new_str == new_str[::-1]:
-    print("Строка", new_str, "является палиндромом")
+    print("String", new_str, "is palindrome")
 else:
-    print("Строка", new_str, "не является палиндромом")
+    print("String", new_str, "is not palindrome")
 
 # check for palindrome using function "reversed"
-
 if new_str == "".join(reversed(new_str)):
-    print("Строка", new_str, "является палиндромом")
+    print("String", new_str, "is palindrome")
 else:
-    print("Строка", new_str, "не является палиндромом")
+    print("String", new_str, "is not palindrome")
