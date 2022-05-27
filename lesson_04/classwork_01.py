@@ -3,9 +3,9 @@
 """
 
 numbers = [1, 3, 15, 7, 25, 34, 11, 4]
-result = 0
+sum_of_numbers = 0
 
 for number in numbers:
     if number > 10:
-        result += number
-print(result)
+        sum_of_numbers += number
+print(sum_of_numbers)
