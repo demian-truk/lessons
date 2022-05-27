@@ -6,5 +6,5 @@
 import math
 
 size = 3
-list = [size * 4, size * size, math.sqrt(2) * size]
-print(list)
+new_list = [size * 4, size * size, math.sqrt(2) * size]
+print(new_list)
