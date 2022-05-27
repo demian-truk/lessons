@@ -36,6 +36,6 @@ print("3-ий список:", list3)
 
 # print a list of numbers in the first two lists but missing in the third
 
-result = set(list1) & set(list2)
-result = set(result) - set(list3)
-print("Новый список:", list(result))
+new_list = set(list1) & set(list2)
+new_list = set(new_list) - set(list3)
+print("Новый список:", list(new_list))
