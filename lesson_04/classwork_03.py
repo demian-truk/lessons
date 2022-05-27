@@ -3,9 +3,9 @@
 """
 
 n = int(input("Введите любое целое число: "))
-result = 0
+sum_of_cubes_of_numbers = 0
 
 while n > 0:
-    result += n ** 3
+    sum_of_cubes_of_numbers += n ** 3
     n -= 1
-print(result)
+print(sum_of_cubes_of_numbers)
