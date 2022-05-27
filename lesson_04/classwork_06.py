@@ -7,6 +7,8 @@ n = int(input("Введите первое число: "))
 m = int(input("Введите второе число: "))
 result = []
 
+# find prime numbers
+
 for number in range(n, m+1):
     if number > 1:
         for num in range(2, number):
@@ -15,6 +17,8 @@ for number in range(n, m+1):
         else:
             result.append(number)
 print("Список всех простых чисел в диапазоне:", result)
+
+# output amount of prime numbers
 
 x = len(result)
 print("Количество простых чисел:", x)
