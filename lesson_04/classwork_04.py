@@ -5,15 +5,13 @@
 import random
 
 # use "break"
-
 while True:
-    n = random.randint(1, 10)
-    if n == 7:
+    number = random.randint(1, 10)
+    if number == 7:
         break
-    print(n)
+    print(number)
 
 # alternative
-
-while n != 7:
-    print(n)
-    n = random.randint(1, 10)
+while number != 7:
+    print(number)
+    number = random.randint(1, 10)
