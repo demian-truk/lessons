@@ -15,7 +15,7 @@ for number in range(n, m+1):
                 break
         else:
             new_list.append(number)
-print("List of all primes in the current range:", new_list)
+print("List of all primes in current range:", new_list)
 
 # output amount of primes
 amount_of_primes = len(new_list)
