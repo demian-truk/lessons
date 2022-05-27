@@ -7,14 +7,14 @@ x = str(input("Введите слово или фразу: "))
 s = x.replace(" ", "")
 s = s.lower()
 
-# check palindrome using construction [::-1]
+# check for palindrome using construction [::-1]
 
 if s == s[::-1]:
     print("Строка", s, "является палиндромом")
 else:
     print("Строка", s, "не является палиндромом")
 
-# check palindrome using function "reversed"
+# check for palindrome using function "reversed"
 
 if s == "".join(reversed(s)):
     print("Строка", s, "является палиндромом")
