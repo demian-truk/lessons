@@ -7,4 +7,5 @@
 alex = 20
 ben = 34
 john = 55
-print("Sum of ages:", alex + ben + john)
+sum_of_ages = alex + ben + john
+print(sum_of_ages)
