@@ -9,33 +9,28 @@ list2 = []
 list3 = []
 
 # create a list of numbers
-
 while True:
-    n = input("Введите числа для 1-го списка (введите строку, чтобы закончить): ")
-    if not n.isdigit():
+    number = input("Enter numbers for 1st list (enter a string to stop): ")
+    if not number.isdigit():
         break
     else:
-        list1.append(n)
-print("1-ый список:", list1)
+        list1.append(number)
 
 while True:
-    n = input("Введите числа для 2-го списка (введите строку, чтобы закончить): ")
-    if not n.isdigit():
+    number = input("Enter numbers for 2nd list (enter a string to stop): ")
+    if not number.isdigit():
         break
     else:
-        list2.append(n)
-print("2-ой список:", list2)
+        list2.append(number)
 
 while True:
-    n = input("Введите числа для 3-го списка (введите строку, чтобы закончить): ")
-    if not n.isdigit():
+    number = input("Enter numbers for 3rd list (enter a string to stop): ")
+    if not number.isdigit():
         break
     else:
-        list3.append(n)
-print("3-ий список:", list3)
+        list3.append(number)
 
 # print a list of numbers in the first two lists but missing in the third
-
 new_list = set(list1) & set(list2)
 new_list = set(new_list) - set(list3)
-print("Новый список:", list(new_list))
+print("New list:", list(new_list))
