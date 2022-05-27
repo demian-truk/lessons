@@ -5,7 +5,7 @@
 
 n = int(input("Введите первое число: "))
 m = int(input("Введите второе число: "))
-result = []
+new_list = []
 
 # find prime numbers
 
@@ -15,10 +15,10 @@ for number in range(n, m+1):
             if number % num == 0:
                 break
         else:
-            result.append(number)
-print("Список всех простых чисел в диапазоне:", result)
+            new_list.append(number)
+print("Список всех простых чисел в диапазоне:", new_list)
 
 # output amount of prime numbers
 
-x = len(result)
+x = len(new_list)
 print("Количество простых чисел:", x)
