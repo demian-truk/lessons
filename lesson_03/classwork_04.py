@@ -5,5 +5,5 @@
 alex = 20
 ben = 34
 john = 55
-result = (alex + ben + john) / 3
-print(result)
+arithmetic_mean_of_age = (alex + ben + john) / 3
+print(arithmetic_mean_of_age)
