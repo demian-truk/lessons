@@ -5,4 +5,10 @@
 """
 
 def three_args(**kwargs):
-    pass
+    result = []
+    for key, value in kwargs.items():
+        if value is not None:
+            result.append(f"{key} = {value}")
+    print(f"Arguments passed: {result}")
+
+three_args(var1=88, var2=None, var3=92)
