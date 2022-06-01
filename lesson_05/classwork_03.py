@@ -4,8 +4,6 @@
 Написать программу в виде трех функций.
 """
 
-my_list = [10, 15, 1, 13, 7, 5, 100, 4]
-
 def my_max(*args):
     max_number = args[0]
     for number in args:
@@ -28,6 +26,8 @@ def min_or_max(func_type, *args):
     else:
         result = my_max(*args)
     return result
+
+my_list = [10, 15, 1, 13, 7, 5, 100, 4]
 
 print(min_or_max("min", *my_list))
 print(min_or_max("max", *my_list))
