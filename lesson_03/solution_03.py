@@ -4,4 +4,5 @@
 """
 
 my_list = ["a", "p", "p", "l", "e"]
+
 print("New string:", "_".join(my_list)[::-1])
