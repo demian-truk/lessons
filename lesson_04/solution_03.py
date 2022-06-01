@@ -10,3 +10,6 @@ def xor_cipher(string, key):
 
 def xor_uncipher(encrypted_string, key):
     pass
+
+# encryption
+# decryption
