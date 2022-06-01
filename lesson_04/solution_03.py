@@ -4,9 +4,9 @@
 Написать также функцию xor_uncipher, которая по зашифрованной строке и ключу восстанавливает исходную строку.
 """
 
-def xor_cipher():
+def xor_cipher(string, key):
     pass
 
 
-def xor_uncipher():
+def xor_uncipher(encrypted_string, key):
     pass
