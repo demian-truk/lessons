@@ -7,5 +7,6 @@
 alex = 20
 ben = 34
 john = 55
+
 sum_of_ages = alex + ben + john
 print(sum_of_ages)
