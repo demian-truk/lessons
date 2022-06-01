@@ -11,12 +11,14 @@ def my_max(*args):
             max_number = number
     return max_number
 
+
 def my_min(*args):
     min_number = args[0]
     for number in args:
         if number < min_number:
             min_number = number
     return min_number
+
 
 def min_or_max(func_type, *args):
     if func_type == "min":
