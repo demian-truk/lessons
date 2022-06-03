@@ -12,6 +12,7 @@ my_dict = {
     "Pig": "Поросенок",
 }
 
+
 def eng_to_rus(word):
     return my_dict[word]
 
@@ -20,6 +21,7 @@ def rus_to_eng(word):
     for key, value in my_dict.items():
         if value == word:
             return key
+
 
 print(eng_to_rus("Pig"))
 print(rus_to_eng("Дорога"))
