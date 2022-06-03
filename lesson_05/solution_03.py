@@ -6,9 +6,11 @@
 
 import requests
 
+
 def download_and_save(link, name):
     with open(name, "wb") as file:
         link = requests.get(link)
         file.write(link.content)
+
 
 download_and_save("https://raw.githubusercontent.com/demian-truk/lessons/master/LICENSE", "License")
