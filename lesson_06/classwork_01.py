@@ -23,5 +23,5 @@ def rus_to_eng(word):
             return key
 
 
-print(eng_to_rus("Pig"))
-print(rus_to_eng("Дорога"))
+print(eng_to_rus("Pig"))    # Поросенок
+print(rus_to_eng("Дорога"))    # Road
