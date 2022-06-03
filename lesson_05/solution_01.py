@@ -13,4 +13,4 @@ def three_args(**kwargs):
     print(f"Arguments passed: {result}")
 
 
-three_args(var1=88, var2=None, var3=92)
+three_args(var1=88, var2=None, var3=92)    # Arguments passed: ['var1 = 88', 'var3 = 92']
