@@ -11,4 +11,5 @@ def three_args(**kwargs):
             result.append(f"{key} = {value}")
     print(f"Arguments passed: {result}")
 
+
 three_args(var1=88, var2=None, var3=92)
