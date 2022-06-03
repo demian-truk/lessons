@@ -8,4 +8,4 @@ sum_of_numbers = 0
 for number in numbers:
     if number > 10:
         sum_of_numbers += number
-print(sum_of_numbers)
+print(sum_of_numbers)    # 85
