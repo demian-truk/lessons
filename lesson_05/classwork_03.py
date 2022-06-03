@@ -31,5 +31,5 @@ def min_or_max(func_type, *args):
 
 my_list = [10, 15, 1, 13, 7, 5, 100, 4]
 
-print(min_or_max("min", *my_list))
-print(min_or_max("max", *my_list))
+print(min_or_max("min", *my_list))    # 1
+print(min_or_max("max", *my_list))    # 100
