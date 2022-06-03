@@ -13,4 +13,8 @@ def max_len_of_word_in_text(text):
     return max_len
 
 
+def most_common_word_in_text(text):
+    pass
+
+
 print(max_len_of_word_in_text(my_text))
