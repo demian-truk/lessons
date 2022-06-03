@@ -10,8 +10,7 @@ encryption_key = input("Enter encryption key: ")
 
 def get_key_symbol(key, index):
     """
-    if length of our key is less than initial string
-    we get next character from very beginning in loop
+    if length of our key is less than initial string we get next character from very beginning in loop
     """
     if index > len(key) - 1:
         return key[index % len(key)]
