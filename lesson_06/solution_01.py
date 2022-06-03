@@ -8,13 +8,14 @@ my_text = "Hello, I'm Dima. I love computer games. Games take a lot of time. But
 my_text = my_text.split()
 
 
+def most_common_word_in_text(text):
+    pass
+
+
 def max_len_of_word_in_text(text):
     max_len = max(my_text, key=len)
     return max_len
 
 
-def most_common_word_in_text(text):
-    pass
-
-
+print(most_common_word_in_text(my_text))
 print(max_len_of_word_in_text(my_text))
