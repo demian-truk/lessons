@@ -16,4 +16,10 @@ def random_card():
     return random_nominal, random_suit
 
 
-print(random_card())
+def main():
+    card = random_card()
+    print(card)
+
+
+if __name__ == "__main__":
+    main()
