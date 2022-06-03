@@ -6,6 +6,7 @@
 def format_string(name):
     print(f"Hello, {name}")
 
+
 my_names = ["Alex", "Sandra", "Ben", "Johnny", "Pit"]
 
 for name in my_names:
