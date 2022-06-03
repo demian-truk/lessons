@@ -6,7 +6,6 @@
 """
 
 from classwork_03 import random_card
-import random
 
 card_deck = {
     "6": 6, "7": 7, "8": 8, "9": 9, "10": 10,
@@ -23,19 +22,15 @@ value = card_value(card_nominal)
 current_sum = value
 
 while True:
+    print(f"Your current amount: {current_sum}")
     choice = input("Get next card [Y/n]: ")
     if choice == "n":
         break
-
     card_nominal, _ = random_card()
     value = card_value(card_nominal)
     current_sum += value
-
     if current_sum > 21:
         print(f"Game over! Your current amount: {current_sum}")
         break
     if current_sum == 21:
         print("You win")
-        break
-    if current_sum < 21:
-        print(f"Your current amount: {current_sum}")
