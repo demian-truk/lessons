@@ -4,6 +4,7 @@
 Получим, например, следующее сообщение: Переданы аргументы: var1 = 2, var3 = 10.
 """
 
+
 def three_args(**kwargs):
     result = []
     for key, value in kwargs.items():
