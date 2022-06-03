@@ -4,6 +4,6 @@
 
 n = int(input("Enter any number: "))
 
-for number in range(1, 101):
+for number in range(1, 100):
     if number % n == 0:
         print(number)
