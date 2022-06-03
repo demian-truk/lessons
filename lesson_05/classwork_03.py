@@ -27,6 +27,7 @@ def min_or_max(func_type, *args):
         result = my_max(*args)
     return result
 
+
 my_list = [10, 15, 1, 13, 7, 5, 100, 4]
 
 print(min_or_max("min", *my_list))
