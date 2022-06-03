@@ -14,7 +14,7 @@ def my_decorator(func):
         func()
         end_time = datetime.now()
         print("Execution_time", end_time - start_time)
-    return execution_time()
+    return execution_time
 
 
 @my_decorator
@@ -23,4 +23,4 @@ def random_delay():
 
 
 if __name__ == "__main__":
-    random_delay
+    random_delay()
