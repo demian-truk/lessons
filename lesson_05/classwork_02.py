@@ -16,4 +16,4 @@ def sum_and_max(*args):
 
 my_list = [10, 15, 1, 13, 7, 5, 100, 4]
 
-print(sum_and_max(*my_list))
+print(sum_and_max(*my_list))    # (155, 100)
