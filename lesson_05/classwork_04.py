@@ -4,6 +4,7 @@
 Например, передаем 2, на выходе получаем "Winter".
 """
 
+
 def month_to_season(month):
     mapping = {
         "Winter": [1, 2, 12],
