@@ -10,3 +10,16 @@
 class_01 = int(input("Enter number of students in class: "))
 class_02 = int(input("Enter number of students in class: "))
 class_03 = int(input("Enter number of students in class: "))
+classes = [class_01, class_02, class_03]
+
+
+def number_of_desks(classes):
+    desks = 0
+    for desk in classes:
+        desks += desk // 2
+        if desk % 2 == 1:
+            desks += 1
+    return desks
+
+
+print(number_of_desks(classes))
