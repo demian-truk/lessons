@@ -21,5 +21,5 @@ def rus_to_eng(word):
             return key
 
 
-print(eng_to_rus("Pig"))
-print(rus_to_eng("Дорога"))
+print(eng_to_rus("House"))    # Дом
+print(rus_to_eng("Яблоко"))    # Apple
