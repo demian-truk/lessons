@@ -5,7 +5,11 @@
 При этом, сам себе человек не может подарить, дубликаты тоже не допустимы.
 """
 
-def secret_santa(*args):
-    pass
-
 party = ["Alex", "Leo", "Sasha", "Jimmy", "Ben", "Steven"]
+
+for index in range(len(party)):
+    # special case when we match last person in list to first
+    if index == len(party) - 1:
+        print(f"{party[index]} gives gift to {party[0]}")
+    else:
+        print(f"{party[index]} gives gift to {party[index + 1]}")
