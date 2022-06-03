@@ -7,7 +7,7 @@ import csv
 
 my_dict = {}
 
-with open("dictionary.csv", "r") as file:
+with open("new_dictionary.csv", "r") as file:
     my_dict = {row[0]: row[1] for row in csv.reader(file)}
 
 
