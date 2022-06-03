@@ -8,12 +8,12 @@ new_str = my_str.replace(" ", "")
 
 # check for palindrome using construction [::-1]
 if new_str == new_str[::-1]:
-    print("String", new_str, "is palindrome")
+    print(f"String {new_str} is palindrome")
 else:
-    print("String", new_str, "is not palindrome")
+    print(f"String {new_str} is not palindrome")
 
 # check for palindrome using function "reversed"
 if new_str == "".join(reversed(new_str)):
-    print("String", new_str, "is palindrome")
+    print(f"String {new_str} is palindrome")
 else:
-    print("String", new_str, "is not palindrome")
+    print(f"String {new_str} is not palindrome")
