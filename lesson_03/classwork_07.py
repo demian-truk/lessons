@@ -8,4 +8,4 @@ import math
 side = 3
 
 new_list = [side * 4, side * side, math.sqrt(2) * side]
-print(new_list)
+print(new_list)    # [12, 9, 4.242640687119286]
