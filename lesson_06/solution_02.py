@@ -7,19 +7,14 @@
 Программа получает на вход три натуральных числа: количество учащихся в каждом из трех классов.
 """
 
-class_01 = int(input("Enter number of students in class: "))
-class_02 = int(input("Enter number of students in class: "))
-class_03 = int(input("Enter number of students in class: "))
-classes = [class_01, class_02, class_03]
 
-
-def number_of_desks(classes):
+def amount_of_desks(class_01, class_02, class_03):
     desks = 0
-    for desk in classes:
+    for desk in class_01, class_02, class_03:
         desks += desk // 2
         if desk % 2 == 1:
             desks += 1
     return desks
 
 
-print(number_of_desks(classes))
+print(amount_of_desks(11, 13, 14))    # 20
