@@ -18,4 +18,4 @@ def max_len_of_word_in_text(text):
 
 
 print(most_common_word_in_text(my_text))
-print(max_len_of_word_in_text(my_text))
+print(max_len_of_word_in_text(my_text))    # computer
