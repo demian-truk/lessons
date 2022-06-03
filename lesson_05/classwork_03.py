@@ -4,6 +4,7 @@
 Написать программу в виде трех функций.
 """
 
+
 def my_max(*args):
     max_number = args[0]
     for number in args:
