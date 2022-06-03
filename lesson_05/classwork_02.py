@@ -3,6 +3,7 @@
 Данная функция возвращает их сумму и максимальное из них.
 """
 
+
 def sum_and_max(*args):
     result_sum = 0
     max_number = args[0]
