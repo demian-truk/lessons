@@ -17,4 +17,4 @@ def month_to_season(month):
             return season
 
 
-print(month_to_season(7))
+print(month_to_season(7))    # Summer
