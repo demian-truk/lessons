@@ -12,4 +12,4 @@ deposit_bonus = 120
 # calculation of deposit profitability
 for term in range(5):    # 5 == deposit_term
     deposit_amount += deposit_amount * interest_on_deposit + deposit_bonus
-print("Deposit profitability:", deposit_amount)
+print("Deposit profitability:", deposit_amount)    # Deposit profitability: 4162.9983
