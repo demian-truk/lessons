@@ -12,6 +12,7 @@ def sum_and_max(*args):
             max_number = number
     return result_sum, max_number
 
+
 my_list = [10, 15, 1, 13, 7, 5, 100, 4]
 
 print(sum_and_max(*my_list))
