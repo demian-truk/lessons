@@ -22,7 +22,6 @@ value = card_value(card_nominal)
 current_sum = value
 
 while True:
-    print(f"Your current amount: {current_sum}")
     choice = input("Get next card [Y/n]: ")
     if choice == "n":
         break
@@ -33,4 +32,6 @@ while True:
         print(f"Game over! Your current amount: {current_sum}")
         break
     if current_sum == 21:
-        print("You win")
+        print("You win!")
+    if current_sum < 21:
+        print(f"Your current amount: {current_sum}")
