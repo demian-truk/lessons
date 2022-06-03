@@ -7,6 +7,7 @@
 input_string = input("Enter string to encryption: ")
 encryption_key = input("Enter encryption key: ")
 
+
 def get_key_symbol(key, index):
     """
     if length of our key is less than initial string
@@ -29,6 +30,7 @@ def xor_uncipher(encrypted_string, key):
     for index, symbol in enumerate(encrypted_string):
         result.append(chr(ord(symbol) ^ ord(get_key_symbol(key, index))))
     return "".join(result)
+
 
 # encryption
 encrypted_string = xor_cipher(input_string, encryption_key)
