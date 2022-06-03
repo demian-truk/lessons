@@ -8,8 +8,18 @@ import csv
 my_dict = {}
 
 with open("dictionary.csv", "r") as file:
-    reader = csv.reader(file)
-    for row in reader:
-        my_dict[row[0]] = row[1]
+    my_dict = {row[0]: row[1] for row in csv.reader(file)}
 
-print(my_dict)
+
+def eng_to_rus(word):
+    return my_dict[word]
+
+
+def rus_to_eng(word):
+    for key, value in my_dict.items():
+        if value == word:
+            return key
+
+
+print(eng_to_rus("Pig"))
+print(rus_to_eng("Дорога"))
