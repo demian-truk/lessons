@@ -6,8 +6,8 @@
 
 import random
 
-card_nominal = [6, 7, 8, 9, 10, "J", "D", "K", "A"]
-card_suit = ["Hearts", "Diamonds", "Clubs", "Spades"]
+card_nominal = ("6", "7", "8", "9", "10", "J", "D", "K", "A")
+card_suit = ("Hearts", "Diamonds", "Clubs", "Spades")
 
 
 def random_card():
