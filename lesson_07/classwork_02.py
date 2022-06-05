@@ -13,7 +13,7 @@ def my_decorator(func):
         start_time = datetime.now()
         func()
         end_time = datetime.now()
-        print("Execution_time", end_time - start_time)
+        print("Execution time:", end_time - start_time)
     return execution_time
 
 
