@@ -33,4 +33,4 @@ while True:
 # output list of numbers in first two lists but missing in third
 new_list = set(list1) & set(list2)
 new_list = set(new_list) - set(list3)
-print("New list:", list(new_list))
+print(f"New list: {list(new_list)}")
