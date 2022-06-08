@@ -14,6 +14,6 @@ class NewDog(Dog):
 
 if __name__ == "__main__":
     dog_1 = NewDog(10, 5, "Bruce", 2)
-    print(f"Old name: {dog_1.name}")
+    print(f"Old name: {dog_1.name}")    # Old name: Bruce
     dog_1.change_name("Turbo")
-    print(f"New name: {dog_1.name}")
+    print(f"New name: {dog_1.name}")    # New name: Turbo
