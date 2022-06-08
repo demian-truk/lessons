@@ -21,3 +21,10 @@ class Animal:
 
     def talk(self):
         print(f"{self.name} is talking")
+
+
+if __name__ == "__main__":
+    animal_1 = Animal(20, 15, "Rocket", 3)
+    animal_1.jump()
+    animal_1.run()
+    animal_1.talk()
