@@ -22,6 +22,7 @@ class Dog:
     def bark(self):
         print(f"{self.name} is barking")
 
+
 if __name__ == "__main__":
     dog_1 = Dog(10, 5, "Bruce", 2)
     dog_1.jump()
