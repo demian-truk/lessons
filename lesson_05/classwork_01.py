@@ -11,4 +11,4 @@ def format_string(name):
 my_names = ["Alex", "Sandra", "Ben", "Johnny", "Pit"]
 
 for name in my_names:
-    format_string(name)
+    format_string(name)    # Hello, Alex; Hello, Sandra; Hello, Ben; Hello, Johnny; Hello, Pit
