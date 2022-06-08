@@ -8,7 +8,7 @@ from classwork_01 import Dog
 
 class NewDog(Dog):
 
-    def change_name(self, new_name):
+    def change_name(self, new_name: str):
         self.name = new_name
 
 
