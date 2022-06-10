@@ -5,3 +5,9 @@
 """
 
 from solution_01 import Car
+
+car_01 = Car("Mercedes", "E500", 2000)
+
+while car_01.speed < 100:
+    car_01.speed += 5
+car_01.display_speed()
