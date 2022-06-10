@@ -17,5 +17,21 @@ class Car:
         self.year_of_manufacture = year_of_manufacture
         self.speed = 0
 
-    def change_speed(self):
-        pass
+    def increase_speed(self):
+        self.speed += 5
+
+    def decrease_speed(self):
+        self.speed -= 5
+
+    def car_stop(self):
+        while self.speed != 0:
+            self.speed -= 5
+
+    def display_speed(self):
+        print(f"Current car speed: {self.speed}")
+
+    def car_reverse(self):
+        max_reverse_speed: int = -40
+        if self.speed <= 0:
+            if self.speed > max_reverse_speed:
+                self.speed -= 5
