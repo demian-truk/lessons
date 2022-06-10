@@ -31,7 +31,7 @@ class Car:
         print(f"Current car speed: {self.speed}")
 
     def car_reverse(self):
-        max_reverse_speed: int = -40
+        max_reverse_speed = -40
         if self.speed <= 0:
             if self.speed > max_reverse_speed:
                 self.speed -= 5
