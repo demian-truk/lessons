@@ -11,6 +11,7 @@ def city_to_country(city):
         "Italy": ["Milan", "Rome", "Turin"],
         "Spain": ["Madrid", "Barcelona", "Valencia"],
         "France": ["Paris", "Lyon", "Marseille"],
+        "Belarus": ["Minsk", "Brest", "Kobrin"],
     }
     for country, cities_list in countries_and_cities.items():
         if city in cities_list:
