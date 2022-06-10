@@ -2,16 +2,27 @@
 Переопределить магические методы сложения, вычитания, умножения на число.
 """
 
+from __future__ import annotations
 from classwork_01 import MyTime
 
 
 class NewTime(MyTime):
 
-    def __add__(self, other: MyTime):
-        return self.to_seconds() + other.to_seconds()
+    @staticmethod
+    def seconds_to_time(seconds) -> NewTime:
+        hours = seconds // (60 * 60)
+        minutes = (seconds % (60 * 60)) // 60
+        seconds = seconds % 60
+        return NewTime(hours=hours, minutes=minutes, seconds=seconds)
 
-    def __sub__(self, other: MyTime):
-        return self.to_seconds() - other.to_seconds()
+    def __add__(self, other: NewTime) -> NewTime:
+        seconds = self.to_seconds() + other.to_seconds()
+        return NewTime.seconds_to_time(seconds)
 
-    def __mul__(self, other: MyTime):
-        return self.to_seconds() * other.to_seconds()
+    def __sub__(self, other: NewTime) -> NewTime:
+        seconds = self.to_seconds() - other.to_seconds()
+        return NewTime.seconds_to_time(seconds)
+
+    def __mul__(self, other: NewTime) -> NewTime:
+        seconds = self.to_seconds() * other.to_seconds()
+        return NewTime.seconds_to_time(seconds)
