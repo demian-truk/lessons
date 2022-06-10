@@ -35,3 +35,17 @@ class Car:
         if self.speed <= 0:
             if self.speed > max_reverse_speed:
                 self.speed -= 5
+
+
+if __name__ == "__main__":
+    car_1 = Car("BMW", "X4", 2014)
+    car_1.display_speed()    # Current car speed: 0
+    car_1.increase_speed()
+    car_1.increase_speed()
+    car_1.display_speed()    # Current car speed: 10
+    car_1.decrease_speed()
+    car_1.display_speed()    # Current car speed: 5
+    car_1.car_stop()
+    car_1.display_speed()    # Current car speed: 0
+    car_1.car_reverse()
+    car_1.display_speed()    # Current car speed: -5
