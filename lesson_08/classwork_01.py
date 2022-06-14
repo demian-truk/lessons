@@ -17,7 +17,8 @@ class Dog(Animal):
 
 if __name__ == "__main__":
     dog_1 = Dog(10, 5, "Bruce", 2)
-    dog_1.jump()
-    dog_1.run()
-    dog_1.talk()
-    print(f"Name: {dog_1.name}, height: {dog_1.height}, weight: {dog_1.weight}, age: {dog_1.age}")
+    dog_1.jump()    # Bruce is jumping
+    dog_1.run()    # Bruce is running
+    dog_1.talk()    # Bruce is barking
+    print(f"""Name: {dog_1.name}, height: {dog_1.height}, weight: {dog_1.weight}, age: {dog_1.age}""")
+    # Name: Bruce, height: 10, weight: 5, age: 2
