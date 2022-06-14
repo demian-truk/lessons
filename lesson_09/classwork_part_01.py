@@ -3,6 +3,8 @@
 Методы: переопределить магические методы сравнения (==, !=, >=, <=, <, >).
 
 2. Переопределить магические методы сложения, вычитания, умножения на число.
+
+3. Создать метод, который выводит на экран отформатированное время (HH:MM:SS).
 """
 
 from __future__ import annotations
@@ -54,3 +56,17 @@ class MyTime:
     def __mul__(self, other: MyTime) -> MyTime:
         seconds = self.to_seconds() * other.to_seconds()
         return MyTime.seconds_to_time(seconds)
+
+    def display_time(self):
+        if self.hours < 10:
+            self.hours = f"0{self.hours}"
+        if self.minutes < 10:
+            self.minutes = f"0{self.minutes}"
+        if self.seconds < 10:
+            self.seconds = f"0{self.seconds}"
+
+        print(f"{self.hours}:{self.minutes}:{self.seconds}")
+
+
+time_01 = MyTime(1, 33, 5)
+time_01.display_time()
