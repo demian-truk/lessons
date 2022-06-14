@@ -25,6 +25,6 @@ class Animal:
 
 if __name__ == "__main__":
     animal_1 = Animal(20, 15, "Rocket", 3)
-    animal_1.jump()
-    animal_1.run()
-    animal_1.talk()
+    animal_1.jump()    # Rocket is jumping
+    animal_1.run()    # Rocket is running
+    animal_1.talk()    # Rocket is talking
