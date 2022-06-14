@@ -11,4 +11,5 @@ car_01 = Car("Mercedes", "E500", 2000)
 while car_01.speed < 100:
     car_01.increase_speed()
 
-car_01.display_speed()    # Current car speed: 100
+if __name__ == "__main__":
+    car_01.display_speed()    # Current car speed: 100
