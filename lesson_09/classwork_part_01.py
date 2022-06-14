@@ -1,12 +1,20 @@
 """
-1. Создать класс MyTime. Атрибуты: hours, minutes, seconds.
+# 1:
+Создать класс MyTime. Атрибуты: hours, minutes, seconds.
 Методы: переопределить магические методы сравнения (==, !=, >=, <=, <, >).
 
-2. Переопределить магические методы сложения, вычитания, умножения на число.
+# 2:
+Переопределить магические методы сложения, вычитания, умножения на число.
 
-3. Создать метод, который выводит на экран отформатированное время (HH:MM:SS).
+# 3:
+Создать метод, который выводит на экран отформатированное время (HH:MM:SS).
 
-4. Создать объект класса MyTime, умножить его на 2 и вывести на печать результат.
+# 4:
+Создать объект класса MyTime, умножить его на 2 и вывести на печать результат.
+
+# 5:
+Создать второй объект класса MyTime.
+Найти разницу с первым объектом, добавить к нему 7 часов и 45 минут, вывести на печать результат.
 """
 
 from __future__ import annotations
@@ -59,17 +67,19 @@ class MyTime:
         seconds = self.to_seconds() * other
         return MyTime.seconds_to_time(seconds)
 
-    def display_time(self):
-        if self.hours < 10:
-            self.hours = f"0{self.hours}"
-        if self.minutes < 10:
-            self.minutes = f"0{self.minutes}"
-        if self.seconds < 10:
-            self.seconds = f"0{self.seconds}"
-        print(f"{self.hours}:{self.minutes}:{self.seconds}")
+    def __str__(self) -> str:
+        return f"{self.hours}:{self.minutes}:{self.seconds}"
 
 
 if __name__ == "__main__":
-    time_01 = MyTime(1, 32, 5)
-    time_01 *= 2
-    time_01.display_time()    # 03:04:10
+    time_01 = MyTime(1, 36, 15)
+    result_mul = time_01 * 2
+    print(result_mul)    # 3:12:30
+
+    time_02 = MyTime(2, 48, 26)
+    result_sub = time_02 - time_01
+    print(result_sub)    # 1:12:11
+
+    time_03 = MyTime(7, 45, 0)
+    result_add = time_02 + time_03
+    print(result_add)    # 10:33:26
