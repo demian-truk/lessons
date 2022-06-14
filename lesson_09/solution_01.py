@@ -12,3 +12,29 @@
     -методы: нахождение площади и периметра.
 При потребности создавать все необходимые методы не описанные в задании.
 """
+
+
+class Point:
+
+    def __init__(self, x: int, y: int):
+        self.x = x
+        self.y = y
+
+
+class Circle:
+
+    def __init__(self, centre: Point, radius: int):
+        self.centre = centre
+        self.radius = radius
+
+
+class Triangle:
+
+    def __init__(self):
+        pass
+
+
+class Square:
+
+    def __init__(self):
+        pass
