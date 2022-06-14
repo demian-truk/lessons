@@ -72,4 +72,4 @@ class MyTime:
 if __name__ == "__main__":
     time_01 = MyTime(1, 32, 5)
     time_01 *= 2
-    time_01.display_time()
+    time_01.display_time()    # 03:04:10
