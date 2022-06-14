@@ -15,6 +15,6 @@ class Cat(Animal):
 
 if __name__ == "__main__":
     cat_1 = Cat(10, 5, "Elvis", 2)
-    cat_1.jump()
-    cat_1.run()
-    cat_1.talk()
+    cat_1.jump()    # Elvis is jumping
+    cat_1.run()    # Elvis is running
+    cat_1.talk()    # Elvis is meowing
