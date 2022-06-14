@@ -30,6 +30,13 @@ class MyTime:
     def to_seconds(self) -> int:
         return self.seconds + self.minutes * 60 + self.hours * 60 * 60
 
+    @staticmethod
+    def seconds_to_time(seconds) -> MyTime:
+        hours = seconds // (60 * 60)
+        minutes = (seconds % (60 * 60)) // 60
+        seconds = seconds % 60
+        return MyTime(hours=hours, minutes=minutes, seconds=seconds)
+
     def __eq__(self, other: MyTime):
         return self.to_seconds() == other.to_seconds()
 
@@ -47,13 +54,6 @@ class MyTime:
 
     def __gt__(self, other: MyTime):
         return self.to_seconds() > other.to_seconds()
-
-    @staticmethod
-    def seconds_to_time(seconds) -> MyTime:
-        hours = seconds // (60 * 60)
-        minutes = (seconds % (60 * 60)) // 60
-        seconds = seconds % 60
-        return MyTime(hours=hours, minutes=minutes, seconds=seconds)
 
     def __add__(self, other: MyTime) -> MyTime:
         seconds = self.to_seconds() + other.to_seconds()
