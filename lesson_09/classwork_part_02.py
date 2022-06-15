@@ -55,4 +55,4 @@ class MyDateTime(MyTime):
 if __name__ == "__main__":
     date_time_01 = MyDateTime(1, 9, 2, 12, 22, 17)
     result_mul = date_time_01 * 2
-    print(result_mul)    # Year: 3, month: 6, day: 5, time: 0:44:34
+    print(result_mul)    # Year: 3, month: 6, day: 5, time: 00:44:34
