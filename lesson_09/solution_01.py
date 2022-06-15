@@ -6,10 +6,10 @@
     -методы: нахождение периметра и площади окружности.
 Класс Triangle:
     -атрибуты: три точки;
-    -методы: нахождение площади и периметра.
+    -методы: нахождение периметра и площади треугольника.
 Класс Square:
     -атрибуты: две точки;
-    -методы: нахождение площади и периметра.
+    -методы: нахождение периметра и площади квадрата.
 При потребности создавать все необходимые методы не описанные в задании.
 """
 
@@ -23,7 +23,20 @@ class Point:
         self.y = y
 
 
-class Circle:
+class Figure:
+
+    def perimeter(self) -> float:
+        raise NotImplementedError
+
+    def area(self) -> float:
+        raise NotImplementedError
+
+    @staticmethod
+    def side_length(point_a: Point, point_b: Point) -> float:
+        return sqrt(abs(point_a.x - point_b.x) ** 2 + abs(point_a.y - point_b.y) ** 2)
+
+
+class Circle(Figure):
 
     def __init__(self, centre: Point, radius: int):
         self.centre = centre
@@ -36,36 +49,42 @@ class Circle:
         return pi * self.radius * self.radius
 
 
-class Triangle:
+class Triangle(Figure):
 
     def __init__(self, point_a: Point, point_b: Point, point_c: Point):
+        super().side_length(point_a, point_b)
         self.point_a = point_a
         self.point_b = point_b
         self.point_c = point_c
 
-    @staticmethod
-    def triangle_side_length(point_a: Point, point_b: Point) -> float:
-        return sqrt(abs(point_a.x - point_b.x) ** 2 + abs(point_a.y - point_b.y) ** 2)
-
     def perimeter(self) -> float:
-        side_ab = Triangle.triangle_side_length(point_a=self.point_a, point_b=self.point_b)
-        side_bc = Triangle.triangle_side_length(point_a=self.point_b, point_b=self.point_c)
-        side_ca = Triangle.triangle_side_length(point_a=self.point_c, point_b=self.point_a)
+        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
+        side_bc = Figure.side_length(point_a=self.point_b, point_b=self.point_c)
+        side_ca = Figure.side_length(point_a=self.point_c, point_b=self.point_a)
         return side_ab + side_bc + side_ca
 
     def area(self) -> float:
-        side_ab = Triangle.triangle_side_length(point_a=self.point_a, point_b=self.point_b)
-        side_bc = Triangle.triangle_side_length(point_a=self.point_b, point_b=self.point_c)
-        side_ca = Triangle.triangle_side_length(point_a=self.point_c, point_b=self.point_a)
+        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
+        side_bc = Figure.side_length(point_a=self.point_b, point_b=self.point_c)
+        side_ca = Figure.side_length(point_a=self.point_c, point_b=self.point_a)
         half_per = self.perimeter() / 2
         return sqrt(half_per * (half_per - side_ab) * (half_per - side_bc) * (half_per - side_ca))
 
 
-class Square:
+class Square(Figure):
 
     def __init__(self, point_a: Point, point_b: Point):
+        super().side_length(point_a, point_b)
         self.point_a = point_a
         self.point_b = point_b
+
+    def perimeter(self) -> float:
+        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
+        return side_ab * 4
+
+    def area(self) -> float:
+        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
+        return side_ab * side_ab
 
 
 if __name__ == "__main__":
@@ -75,3 +94,5 @@ if __name__ == "__main__":
     triangle_01 = Triangle(Point(2, 2), Point(6, 2), Point(6, 5))
     print(f"Triangle perimeter: {triangle_01.perimeter()}")    # Triangle perimeter: 12.0
 
+    square_01 = Square(Point(2, 2), Point(6, 2))
+    print(f"Square perimeter: {square_01.perimeter()}")    # Square perimeter: 16.0
