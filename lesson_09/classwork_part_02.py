@@ -26,7 +26,7 @@ class MyDateTime(MyTime):
             self.hours * 60 * 60,
             self.day * 60 * 60 * 24,
             self.month * 60 * 60 * 24 * 30,
-            self.year * 60 * 60 * 24 * 30 * 12
+            self.year * 60 * 60 * 24 * 30 * 12,
         ])
 
     @staticmethod
