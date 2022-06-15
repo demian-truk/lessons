@@ -49,7 +49,7 @@ class MyDateTime(MyTime):
 
     def __str__(self) -> str:
         return f"Year: {self.year}, month: {self.month}, day: {self.day}," \
-               f" time: {self.hours}:{self.minutes}:{self.seconds}"
+               f" time: {self.hours:02d}:{self.minutes:02d}:{self.seconds:02d}"
 
 
 if __name__ == "__main__":

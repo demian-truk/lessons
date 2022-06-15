@@ -68,17 +68,17 @@ class MyTime:
         return MyTime.seconds_to_time(seconds)
 
     def __str__(self) -> str:
-        return f"{self.hours}:{self.minutes}:{self.seconds}"
+        return f"{self.hours:02d}:{self.minutes:02d}:{self.seconds:02d}"
 
 
 if __name__ == "__main__":
     time_01 = MyTime(1, 36, 15)
     result_mul = time_01 * 2
-    print(result_mul)    # 3:12:30
+    print(result_mul)    # 03:12:30
 
     time_02 = MyTime(2, 48, 26)
     result_sub = time_02 - time_01
-    print(result_sub)    # 1:12:11
+    print(result_sub)    # 01:12:11
 
     time_03 = MyTime(7, 45, 0)
     result_add = time_02 + time_03
