@@ -8,13 +8,14 @@
 """
 
 
-def tower_of_hanoi(n: int, start, buf, end):
+def tower_of_hanoi(n: int, start, end):
     if n == 1:
-        print(f"Move disk 1 from {start} to {end}")
+        print(f"Move disk 1 from rod {start} to rod {end}")
     else:
-        tower_of_hanoi(n - 1, start, end, buf)
-        print(f"Move disk {n} from {start} to {end}")
-        tower_of_hanoi(n - 1, buf, start, end)
+        buf = 6 - start - end
+        tower_of_hanoi(n - 1, start, buf)
+        print(f"Move disk {n} from rod {start} to rod {end}")
+        tower_of_hanoi(n - 1, buf, end)
 
 
-tower_of_hanoi(4, "A", "B", "C")
+tower_of_hanoi(4, 1, 3)
