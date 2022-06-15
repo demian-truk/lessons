@@ -52,39 +52,33 @@ class Circle(Figure):
 class Triangle(Figure):
 
     def __init__(self, point_a: Point, point_b: Point, point_c: Point):
-        super().side_length(point_a, point_b)
         self.point_a = point_a
         self.point_b = point_b
         self.point_c = point_c
+        self.side_ab = self.side_length(self.point_a, self.point_b)
+        self.side_bc = self.side_length(self.point_b, self.point_c)
+        self.side_ca = self.side_length(self.point_c, self.point_a)
 
     def perimeter(self) -> float:
-        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
-        side_bc = Figure.side_length(point_a=self.point_b, point_b=self.point_c)
-        side_ca = Figure.side_length(point_a=self.point_c, point_b=self.point_a)
-        return side_ab + side_bc + side_ca
+        return self.side_ab + self.side_bc + self.side_ca
 
     def area(self) -> float:
-        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
-        side_bc = Figure.side_length(point_a=self.point_b, point_b=self.point_c)
-        side_ca = Figure.side_length(point_a=self.point_c, point_b=self.point_a)
         half_per = self.perimeter() / 2
-        return sqrt(half_per * (half_per - side_ab) * (half_per - side_bc) * (half_per - side_ca))
+        return sqrt(half_per * (half_per - self.side_ab) * (half_per - self.side_bc) * (half_per - self.side_ca))
 
 
 class Square(Figure):
 
     def __init__(self, point_a: Point, point_b: Point):
-        super().side_length(point_a, point_b)
         self.point_a = point_a
         self.point_b = point_b
+        self.side_ab = self.side_length(self.point_a, self.point_b)
 
     def perimeter(self) -> float:
-        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
-        return side_ab * 4
+        return self.side_ab * 4
 
     def area(self) -> float:
-        side_ab = Figure.side_length(point_a=self.point_a, point_b=self.point_b)
-        return side_ab * side_ab
+        return self.side_ab * self.side_ab
 
 
 if __name__ == "__main__":
