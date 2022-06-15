@@ -6,3 +6,15 @@
 Необходимо переложить всю пирамидку со стержня 1 на стержень 3 за минимальное число перекладываний.
 Напишите программу, которая для числа дисков n печатает последовательность перекладываний, необходимую для решения.
 """
+
+
+def tower_of_hanoi(n: int, start, buf, end):
+    if n == 1:
+        print(f"Move disk 1 from {start} to {end}")
+    else:
+        tower_of_hanoi(n - 1, start, end, buf)
+        print(f"Move disk {n} from {start} to {end}")
+        tower_of_hanoi(n - 1, buf, start, end)
+
+
+tower_of_hanoi(4, "A", "B", "C")
