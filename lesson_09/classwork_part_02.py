@@ -20,12 +20,14 @@ class MyDateTime(MyTime):
         self.day = day
 
     def to_seconds(self) -> int:
-        return sum([self.seconds,
-                    self.minutes * 60,
-                    self.hours * 60 * 60,
-                    self.day * 60 * 60 * 24,
-                    self.month * 60 * 60 * 24 * 30,
-                    self.year * 60 * 60 * 24 * 30 * 12])
+        return sum([
+            self.seconds,
+            self.minutes * 60,
+            self.hours * 60 * 60,
+            self.day * 60 * 60 * 24,
+            self.month * 60 * 60 * 24 * 30,
+            self.year * 60 * 60 * 24 * 30 * 12
+        ])
 
     @staticmethod
     def seconds_to_time(seconds) -> MyDateTime:
