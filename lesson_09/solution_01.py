@@ -94,5 +94,5 @@ if __name__ == "__main__":
     triangle_01 = Triangle(Point(2, 2), Point(6, 2), Point(6, 5))
     print(f"Triangle perimeter: {triangle_01.perimeter()}")    # Triangle perimeter: 12.0
 
-    square_01 = Square(Point(2, 2), Point(6, 2))
-    print(f"Square perimeter: {square_01.perimeter()}")    # Square perimeter: 16.0
+    square_01 = Square(Point(2, 2), Point(7, 2))
+    print(f"Square perimeter: {square_01.perimeter()}")    # Square perimeter: 20.0
