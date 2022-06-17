@@ -24,6 +24,6 @@ class SymbolsIterator:
 
 
 if __name__ == "__main__":
-    my_symb = SymbolsIterator(symbol="N", count=5)
-    for item in my_symb:
+    my_symbols = SymbolsIterator(symbol="N", count=5)
+    for item in my_symbols:
         print(item)
