@@ -40,16 +40,12 @@ def update_product(product_id: int, name: str, price: int, amount: int, comment:
         cursor.execute(
             """
             UPDATE my_products
-            SET name == ?,
-            amount == ?,
-            price == ?,
-            comment == ?
+            SET name == ?, amount == ?, price == ?, comment == ?
             WHERE id == ?;
             """,
             (name, amount, price, comment, product_id),
         )
         session.commit()
-        return cursor.fetchone()
 
 
 def delete_product(product_id: int):
@@ -63,4 +59,3 @@ def delete_product(product_id: int):
             (product_id,),
         )
         session.commit()
-        return cursor.fetchone()
