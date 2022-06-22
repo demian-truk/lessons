@@ -19,8 +19,7 @@ def create_user(firstname: str, lastname: str, email: str, password: str, age: i
         cursor = session.cursor()
         cursor.execute(
             """
-            INSERT INTO user (firstname, lastname, email, password, age)
-            VALUES (?, ?, ?, ?, ?);
+            INSERT INTO user (firstname, lastname, email, password, age) VALUES (?, ?, ?, ?, ?);
             """,
             (firstname, lastname, email, password, age),
         )
