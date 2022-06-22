@@ -13,7 +13,7 @@
 import sqlite3
 
 
-def select_user(firstname: str):
+def select_user_by_firstname(firstname: str):
     with sqlite3.connect("my_database.sqlite3") as session:
         cursor = session.cursor()
         cursor.execute(
@@ -22,11 +22,27 @@ def select_user(firstname: str):
             FROM user
             WHERE firstname = ?;
             """,
-            (firstname,)
+            (firstname,),
         )
         session.commit()
         return cursor.fetchone()
 
 
+def select_user_by_age(from_age: int, to_age: int):
+    with sqlite3.connect("my_database.sqlite3") as session:
+        cursor = session.cursor()
+        cursor.execute(
+            """
+            SELECT *
+            FROM user
+            WHERE age > ? and age < ?;
+            """,
+            (from_age, to_age),
+        )
+        session.commit()
+        return cursor.fetchall()
+
+
 if __name__ == "__main__":
-    print(select_user("Levi"))
+    print(select_user_by_firstname("Levi"))
+    print(select_user_by_age(22, 34))
