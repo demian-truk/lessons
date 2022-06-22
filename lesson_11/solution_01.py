@@ -26,7 +26,7 @@ def select_product(name: str):
             """
             SELECT *
             FROM my_products
-            WHERE name == ?
+            WHERE name == ?;
             """,
             (name,),
         )
@@ -34,5 +34,33 @@ def select_product(name: str):
         return cursor.fetchall()
 
 
-if __name__ == "__main__":
-    print(select_product("Xiaomi"))
+def update_product(product_id: int, name: str, price: int, amount: int, comment: str):
+    with sqlite3.connect("products.sqlite3") as session:
+        cursor = session.cursor()
+        cursor.execute(
+            """
+            UPDATE my_products
+            SET name == ?,
+            amount == ?,
+            price == ?,
+            comment == ?
+            WHERE id == ?;
+            """,
+            (name, amount, price, comment, product_id),
+        )
+        session.commit()
+        return cursor.fetchone()
+
+
+def delete_product(product_id: int):
+    with sqlite3.connect("products.sqlite3") as session:
+        cursor = session.cursor()
+        cursor.execute(
+            """
+            DELETE FROM my_products
+            WHERE id == ?;
+            """,
+            (product_id,),
+        )
+        session.commit()
+        return cursor.fetchone()
