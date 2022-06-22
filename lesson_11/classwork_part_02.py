@@ -14,7 +14,7 @@ import sqlite3
 
 
 def select_user_by_firstname(firstname: str):
-    with sqlite3.connect("my_database.sqlite3") as session:
+    with sqlite3.connect("user.sqlite3") as session:
         cursor = session.cursor()
         cursor.execute(
             """
@@ -29,7 +29,7 @@ def select_user_by_firstname(firstname: str):
 
 
 def select_user_by_age(from_age: int, to_age: int):
-    with sqlite3.connect("my_database.sqlite3") as session:
+    with sqlite3.connect("user.sqlite3") as session:
         cursor = session.cursor()
         cursor.execute(
             """
