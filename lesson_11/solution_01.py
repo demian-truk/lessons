@@ -11,8 +11,7 @@ def create_product(name: str, price: int, amount: int, comment: str):
         cursor = session.cursor()
         cursor.execute(
             """
-            INSERT INTO my_products (name, price, amount, comment)
-            VALUES (?, ?, ?, ?);
+            INSERT INTO my_products (name, price, amount, comment) VALUES (?, ?, ?, ?);
             """,
             (name, price, amount, comment),
         )
@@ -24,9 +23,7 @@ def select_product(name: str):
         cursor = session.cursor()
         cursor.execute(
             """
-            SELECT *
-            FROM my_products
-            WHERE name == ?;
+            SELECT * FROM my_products WHERE name == ?;
             """,
             (name,),
         )
@@ -39,9 +36,7 @@ def update_product(product_id: int, name: str, price: int, amount: int, comment:
         cursor = session.cursor()
         cursor.execute(
             """
-            UPDATE my_products
-            SET name == ?, amount == ?, price == ?, comment == ?
-            WHERE id == ?;
+            UPDATE my_products SET name == ?, amount == ?, price == ?, comment == ? WHERE id == ?;
             """,
             (name, amount, price, comment, product_id),
         )
@@ -53,8 +48,7 @@ def delete_product(product_id: int):
         cursor = session.cursor()
         cursor.execute(
             """
-            DELETE FROM my_products
-            WHERE id == ?;
+            DELETE FROM my_products WHERE id == ?;
             """,
             (product_id,),
         )
