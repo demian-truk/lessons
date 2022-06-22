@@ -18,9 +18,7 @@ def select_user_by_firstname(firstname: str):
         cursor = session.cursor()
         cursor.execute(
             """
-            SELECT *
-            FROM user
-            WHERE firstname = ?;
+            SELECT * FROM user WHERE firstname = ?;
             """,
             (firstname,),
         )
@@ -33,9 +31,7 @@ def select_user_by_age(from_age: int, to_age: int):
         cursor = session.cursor()
         cursor.execute(
             """
-            SELECT *
-            FROM user
-            WHERE age > ? and age < ?;
+            SELECT * FROM user WHERE age > ? and age < ?;
             """,
             (from_age, to_age),
         )
@@ -48,9 +44,7 @@ def select_user_by_firstname_or_age(firstname: str, age: int):
         cursor = session.cursor()
         cursor.execute(
             """
-            SELECT *
-            FROM user
-            WHERE firstname == ? or age == ?;
+            SELECT * FROM user WHERE firstname == ? or age == ?;
             """,
             (firstname, age),
         )
