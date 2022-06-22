@@ -6,7 +6,7 @@
 import sqlite3
 
 
-def create_product(name: str, price: int, amount: int, comment):
+def create_product(name: str, price: int, amount: int, comment: str):
     with sqlite3.connect("products.sqlite3") as session:
         cursor = session.cursor()
         cursor.execute(
@@ -17,3 +17,22 @@ def create_product(name: str, price: int, amount: int, comment):
             (name, price, amount, comment),
         )
         session.commit()
+
+
+def select_product(name: str):
+    with sqlite3.connect("products.sqlite3") as session:
+        cursor = session.cursor()
+        cursor.execute(
+            """
+            SELECT *
+            FROM my_products
+            WHERE name == ?
+            """,
+            (name,),
+        )
+        session.commit()
+        return cursor.fetchall()
+
+
+if __name__ == "__main__":
+    print(select_product("Xiaomi"))
