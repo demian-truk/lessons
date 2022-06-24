@@ -8,7 +8,7 @@
 
 from sqlalchemy.orm import sessionmaker, Session
 from models import Base, Product
-from lesson_12.utils import setup_db_engine, create_database_if_not_exists
+from lesson_12.classwork.utils import setup_db_engine, create_database_if_not_exists
 
 
 def create_product(session: Session, name: str, price: int, amount: int, comment: str) -> Product:
