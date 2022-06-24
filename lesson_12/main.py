@@ -8,8 +8,12 @@
 
 # 3:
 Создать функции для добавления нового и обновления существующего адреса пользователя.
+
+# 4:
+Создать функцию для поиска всех пользователей с определенным возрастом.
 """
 
+from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker, Session
 from models import Base, User, Profile, Address
 from utils import setup_db_engine, create_database_if_not_exists
@@ -51,11 +55,3 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
-
-    user = current_session.query(User).filter_by(email="test@test.com").first()
-    update_or_create_address(
-        session=current_session,
-        user=user,
-        city="Brest",
-        address="Lomonosova"
-    )
