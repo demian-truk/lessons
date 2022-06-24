@@ -18,7 +18,7 @@ def create_product(name: str, price: int, amount: int, comment: str):
         session.commit()
 
 
-def select_product():
+def select_products():
     with sqlite3.connect("products.sqlite3") as session:
         cursor = session.cursor()
         cursor.execute(
