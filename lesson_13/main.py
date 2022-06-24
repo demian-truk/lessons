@@ -19,7 +19,7 @@ def generate_user(session: Session) -> User:
     profile = Profile(user=user, phone=fake.phone_number(), age=fake.pyint(min_value=18, max_value=50))
     address = Address(user=user, city=fake.city(), address=fake.address())
 
-    session.add_all([user, profile, address])
+    session.add_all((user, profile, address))
     session.commit()
 
     return user
@@ -32,6 +32,3 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
-
-    for _ in range(10):
-        generate_user(current_session)
