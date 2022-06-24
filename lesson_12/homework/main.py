@@ -7,13 +7,11 @@
 """
 
 from sqlalchemy.orm import sessionmaker, Session
-from models import Base, Product, Purchase
+from models import Base, Product
 from lesson_12.utils import setup_db_engine, create_database_if_not_exists
 
 
-def create_product(
-        session: Session, name: str, price: int, amount: int, comment: str
-) -> Product:
+def create_product(session: Session, name: str, price: int, amount: int, comment: str) -> Product:
     product = Product(name=name, price=price, amount=amount, comment=comment)
 
     session.add(product)
@@ -28,9 +26,7 @@ def select_products():
         print(f"Name: {prod.name}, price: {prod.price}, amount: {prod.amount}, comment: {prod.comment}")
 
 
-def delete_product_by_id(
-        session: Session, id_number: int
-):
+def delete_product_by_id(session: Session, id_number: int):
     session.query(Product).filter_by(id=id_number).delete()
 
     session.commit()
