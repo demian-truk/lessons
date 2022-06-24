@@ -28,6 +28,14 @@ def select_products():
         print(f"Name: {prod.name}, price: {prod.price}, amount: {prod.amount}, comment: {prod.comment}")
 
 
+def delete_product_by_id(
+        session: Session, id_number: int
+):
+    session.query(Product).filter_by(id=id_number).delete()
+
+    session.commit()
+
+
 if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
