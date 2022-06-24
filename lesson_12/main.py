@@ -31,7 +31,7 @@ def create_user(
     return user
 
 
-def update_or_create_address(session: Session, user: User, city: str, address: str) -> Address:
+def create_or_update_address(session: Session, user: User, city: str, address: str) -> Address:
     if len(user.addresses):
         current_address = user.addresses[0]
         current_address.city = city
@@ -45,7 +45,7 @@ def update_or_create_address(session: Session, user: User, city: str, address: s
     return current_address
 
 
-def select_user_by_age(all_profiles: list):
+def select_user_by_age(all_profiles):
     for profile in all_profiles:
         print(profile.user.email)
 
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
 
-    Base.metadata.create_all(engine)
+    # Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
 
