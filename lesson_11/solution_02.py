@@ -11,7 +11,7 @@ TEMPLATE = """
     1. Create new product
     2. Output product information
     3. Update by ID
-    4. Delete bu ID
+    4. Delete by ID
 """
 
 
