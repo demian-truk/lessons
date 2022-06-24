@@ -10,10 +10,6 @@ from utils import setup_db_engine, create_database_if_not_exists
 fake = Faker()
 
 
-def generate_user(session):
-    pass
-
-
 if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
