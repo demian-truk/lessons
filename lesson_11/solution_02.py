@@ -9,7 +9,7 @@ DB_NAME = "products.sqlite3"
 TEMPLATE = """
     Choose one of options:
     1. Create new product
-    2. Output product information
+    2. Output products information
     3. Update by ID
     4. Delete by ID
 """
