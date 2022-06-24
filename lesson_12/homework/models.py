@@ -13,6 +13,11 @@ Base = declarative_base()
 
 
 class User(Base):
+    __tablename__ = "user"
+    id = Column(Integer, primary_key=True)
+    email = Column(String)
+    password = Column(String)
+
     purchases = relationship("Purchase", back_populates="user")
 
 
