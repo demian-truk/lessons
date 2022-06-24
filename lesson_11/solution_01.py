@@ -18,14 +18,13 @@ def create_product(name: str, price: int, amount: int, comment: str):
         session.commit()
 
 
-def select_product(name: str):
+def select_product():
     with sqlite3.connect("products.sqlite3") as session:
         cursor = session.cursor()
         cursor.execute(
             """
-            SELECT * FROM my_products WHERE name == ?;
-            """,
-            (name,),
+            SELECT * FROM my_products;
+            """
         )
         session.commit()
         return cursor.fetchall()
