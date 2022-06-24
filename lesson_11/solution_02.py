@@ -4,8 +4,6 @@
 
 from solution_01 import create_product, select_product, update_product, delete_product
 
-DB_NAME = "products.sqlite3"
-
 TEMPLATE = """
     Choose one of options:
     1. Create new product
