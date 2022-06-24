@@ -7,7 +7,7 @@
 """
 
 from sqlalchemy.orm import sessionmaker, Session
-from models import Base, User, Product, Purchase
+from models import Base, Product, Purchase
 from lesson_12.utils import setup_db_engine, create_database_if_not_exists
 
 
@@ -22,20 +22,10 @@ def create_product(
     return product
 
 
-# def update_or_create_address(
-#         session: Session, user: User, city: str, address: str
-# ) -> Address:
-#     if len(user.addresses):
-#         current_address = user.addresses[0]
-#         current_address.city = city
-#         current_address.address = address
-#     else:
-#         current_address = Address(user=user, city=city, address=address)
-#
-#     session.add(current_address)
-#     session.commit()
-#
-#     return current_address
+def select_products():
+    all_products = current_session.query(Product)
+    for prod in all_products:
+        print(f"Name: {prod.name}, price: {prod.price}, amount: {prod.amount}, comment: {prod.comment}")
 
 
 if __name__ == "__main__":
@@ -45,11 +35,3 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
-
-    product1 = create_product(
-        session=current_session,
-        name="iPhone",
-        price=300,
-        amount=20,
-        comment="Gold"
-    )
