@@ -39,22 +39,21 @@ def select_user_by_age(from_age: int, to_age: int):
         return cursor.fetchall()
 
 
-def select_user_by_firstname_or_age(firstname: str, age: int):
-    with sqlite3.connect("user.sqlite3") as session:
-        cursor = session.cursor()
-        cursor.execute(
-            """
-            SELECT * FROM user WHERE firstname == ? or age == ?;
-            """,
-            (firstname, age),
-        )
-        session.commit()
-        return cursor.fetchall()
+def select_user_by_firstname_or_age():
+    while True:
+        choice = input("Perform a search by name [1] or age [2]: ")
+        if choice == "1":
+            search = input("Enter firstname: ")
+            print(select_user_by_firstname(search))
+        elif choice == "2":
+            from_age = input("Enter minimum age: ")
+            to_age = input("Enter maximum age: ")
+            print(select_user_by_age(int(from_age), int(to_age)))
+        else:
+            break
 
 
 if __name__ == "__main__":
     print(select_user_by_firstname("Levi"))
     print(select_user_by_age(22, 34))
-    select_name = input("Enter firstname for select: ")
-    select_age = int(input("Enter age to select: "))
-    print(select_user_by_firstname_or_age(select_name, select_age))
+    select_user_by_firstname_or_age()
