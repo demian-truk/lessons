@@ -14,7 +14,6 @@
 *** НЕ СДЕЛАНО ***
 """
 
-from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker, Session
 from models import Base, User, Profile, Address
 from utils import setup_db_engine, create_database_if_not_exists
