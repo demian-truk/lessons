@@ -2,7 +2,7 @@
 Создать программу с пользовательским интерфейсом, позволяющим выбирать определенную функцию и вводить требуемые данные.
 """
 
-from solution_01 import create_product, select_product, update_product, delete_product
+from solution_01 import create_product, select_products, update_product, delete_product
 
 TEMPLATE = """
     Choose one of options:
@@ -25,7 +25,7 @@ def user_menu():
             name, price, amount, comment = input().split(',')
             create_product(name, int(price), int(amount), comment)
         elif user_choice == 2:
-            for product in select_product():
+            for product in select_products():
                 print(product)
         elif user_choice == 3:
             print("Enter product_id, name, price, amount and comment by commas for update: ")
