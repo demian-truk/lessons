@@ -25,6 +25,15 @@ def generate_user(session: Session) -> User:
     return user
 
 
+def generate_purchase(session: Session):
+    user = generate_user(session)
+    product = Product(name=fake.company(), price=fake.pyint(min_value=20, max_value=200))
+    purchase = Purchase(user=user, product=product, amount=fake.pyint(min_value=1, max_value=5))
+
+    session.add_all((product, purchase))
+    session.commit()
+
+
 if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
