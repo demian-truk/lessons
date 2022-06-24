@@ -58,5 +58,5 @@ if __name__ == "__main__":
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
 
-    users_by_age = current_session.query(Profile).filter(Profile.age > 35).all()
-    select_user_by_age(users_by_age)
+    users = current_session.query(Profile).join(User).filter(Profile.age >= 34, Profile.age <= 40).all()
+    select_user_by_age(users)
