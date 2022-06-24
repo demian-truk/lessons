@@ -11,7 +11,6 @@
 
 # 4:
 Создать функцию для поиска всех пользователей с определенным возрастом.
-*** НЕ СДЕЛАНО ***
 """
 
 from sqlalchemy.orm import sessionmaker, Session
@@ -32,9 +31,7 @@ def create_user(
     return user
 
 
-def update_or_create_address(
-        session: Session, user: User, city: str, address: str
-) -> Address:
+def update_or_create_address(session: Session, user: User, city: str, address: str) -> Address:
     if len(user.addresses):
         current_address = user.addresses[0]
         current_address.city = city
@@ -48,6 +45,11 @@ def update_or_create_address(
     return current_address
 
 
+def select_user_by_age(all_profiles: list):
+    for profile in all_profiles:
+        print(profile.user.email)
+
+
 if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
@@ -55,3 +57,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
+
+    users_by_age = current_session.query(Profile).filter(Profile.age > 35).all()
+    select_user_by_age(users_by_age)
