@@ -55,7 +55,7 @@ if __name__ == "__main__":
     current_session = CurrentSession()
 
     select_user_by_sum_of_purchase = \
-        current_session.query(Purchase).join(Product).join(User).filter(Product.price * Purchase.amount > 400).all()
+        current_session.query(Purchase).join(User).join(Purchase).filter(Product.price * Purchase.amount > 400).all()
     select_user(select_user_by_sum_of_purchase)
 
     select_user_by_purchase_of_product = \
