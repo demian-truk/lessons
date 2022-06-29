@@ -4,9 +4,16 @@
 
 # 2:
 Написать функции генераторы данных для различных моделей.
+
+# 3:
+Создать функцию для поиска пользователей, у которых были покупки стоимостью более Х у.е.
+
+# 4:
+Создать функцию для поиска пользователей, которые покупали определенный товар (по названию товара).
 """
 
 from faker import Faker
+from sqlalchemy.sql import and_
 from sqlalchemy.orm import sessionmaker, Session
 from models import Base, User, Profile, Address, Product, Purchase
 from utils import setup_db_engine, create_database_if_not_exists
@@ -34,6 +41,11 @@ def generate_purchase(session: Session):
     session.commit()
 
 
+def select_user(all_users):
+    for user in all_users:
+        print(user.user.email)
+
+
 if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
@@ -41,3 +53,12 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
+
+    select_user_by_sum_of_purchase = \
+        current_session.query(Purchase).join(Product).join(User).filter(Product.price * Purchase.amount > 400).all()
+    select_user(select_user_by_sum_of_purchase)
+
+    select_user_by_purchase_of_product = \
+        current_session.query(Purchase).join(Product).join(User).filter(
+            and_(Product.name == "Sushi", Purchase.amount > 2)).all()
+    select_user(select_user_by_purchase_of_product)
