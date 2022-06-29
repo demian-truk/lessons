@@ -1,9 +1,9 @@
 """
 # 1:
-Реализовать следующие функции для продуктов: создание, чтение, ^^^обновление по id^^^, удаление по id.
+Реализовать следующие функции для продуктов: создание, чтение, ^^обновление по id^^, удаление по id.
 
 # 2:
-^^^Реализовать покупку продукта, вывод всех покупок пользователя, фильтрацию по произвольным параметрам.^^^
+^^Реализовать покупку продукта, вывод всех покупок пользователя, фильтрацию по произвольным параметрам.^^
 """
 
 from sqlalchemy.orm import sessionmaker, Session
@@ -24,10 +24,6 @@ def select_products():
     all_products = current_session.query(Product)
     for prod in all_products:
         print(f"Name: {prod.name}, price: {prod.price}, amount: {prod.amount}, comment: {prod.comment}")
-
-
-def update_product_by_id():
-    pass
 
 
 def delete_product_by_id(session: Session, id_number: int):
