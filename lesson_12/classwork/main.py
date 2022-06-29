@@ -54,10 +54,10 @@ if __name__ == "__main__":
     engine = setup_db_engine()
     create_database_if_not_exists(engine=engine)
 
-    Base.metadata.create_all(engine)
+    # Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
 
     select_user_by_age = \
-        current_session.query(User).join(Profile).filter(Profile.age >= 35, Profile.age <= 40).all()
+        current_session.query(Profile).join(User).filter(Profile.age >= 35, Profile.age <= 40).all()
     select_user(select_user_by_age)
