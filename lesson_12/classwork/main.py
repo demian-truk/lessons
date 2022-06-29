@@ -45,9 +45,9 @@ def create_or_update_address(session: Session, user: User, city: str, address: s
     return current_address
 
 
-def select_user(all_profiles):
-    for profile in all_profiles:
-        print(profile.user.email)
+def select_user(all_users):
+    for user in all_users:
+        print(user.user.email)
 
 
 if __name__ == "__main__":
