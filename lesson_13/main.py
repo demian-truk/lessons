@@ -60,5 +60,5 @@ if __name__ == "__main__":
 
     select_user_by_purchase_of_product = \
         current_session.query(Purchase).join(Product).join(User).filter(
-            and_(Product.name == "Sushi", Purchase.amount > 2)).all()
+            and_(Product.name == "Sushi", Purchase.amount >= 1)).all()
     select_user(select_user_by_purchase_of_product)
