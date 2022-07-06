@@ -1,7 +1,3 @@
-"""
-Создать функции для подключения и создания базы данных.
-"""
-
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 from sqlalchemy_utils import create_database, database_exists
