@@ -45,7 +45,8 @@ def create_or_update_address(session: Session, user: User, city: str, address: s
     return current_address
 
 
-def select_user(all_users):
+def select_user_by_age(age: str):
+    all_users = current_session.query(Profile).join(User).filter(Profile.age == age).all()
     for user in all_users:
         print(user.user.email)
 
@@ -57,7 +58,3 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
-
-    select_user_by_age = \
-        current_session.query(Profile).join(User).filter(Profile.age >= 35, Profile.age <= 40).all()
-    select_user(select_user_by_age)
