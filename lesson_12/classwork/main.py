@@ -46,8 +46,8 @@ def create_or_update_address(session: Session, user: User, city: str, address: s
 
 
 def select_user_by_age(age: str):
-    all_users = current_session.query(Profile).join(User).filter(Profile.age == age).all()
-    for user in all_users:
+    users = current_session.query(Profile).join(User).filter(Profile.age == age).all()
+    for user in users:
         print(user.user.email)
 
 
