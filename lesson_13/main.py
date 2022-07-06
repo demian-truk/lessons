@@ -35,8 +35,17 @@ def generate_purchase(session: Session):
     session.commit()
 
 
-def select_user(all_users):
-    for user in all_users:
+def select_user_by_sum_of_purchase(sum_of_purchase: int):
+    users = current_session.query(Purchase).join(Product).join(User).filter(
+        Product.price * Purchase.amount > sum_of_purchase).all()
+    for user in users:
+        print(user.user.email)
+
+
+def select_user_by_purchase_of_product():
+    users = current_session.query(Purchase).join(Product).join(User).filter(
+            and_(Product.name == input("Enter product for select: "), Purchase.amount >= 1)).all()
+    for user in users:
         print(user.user.email)
 
 
@@ -47,12 +56,3 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     CurrentSession = sessionmaker(bind=engine)
     current_session = CurrentSession()
-
-    select_user_by_sum_of_purchase = \
-        current_session.query(Purchase).join(User).join(Purchase).filter(Product.price * Purchase.amount > 400).all()
-    select_user(select_user_by_sum_of_purchase)
-
-    select_user_by_purchase_of_product = \
-        current_session.query(Purchase).join(Product).join(User).filter(
-            and_(Product.name == "Sushi", Purchase.amount >= 1)).all()
-    select_user(select_user_by_purchase_of_product)
