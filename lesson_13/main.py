@@ -1,8 +1,4 @@
 """
-# 1:
-Добавить функцию вывода всех товаров, купленных определенным пользователем.
-
-# 2:
 Добавить фильтрацию пользователей по купленным товарам.
 """
 
@@ -13,6 +9,19 @@ from models import Base, User, Profile, Address, Product, Purchase
 from utils import setup_db_engine, create_database_if_not_exists
 
 fake = Faker()
+
+
+def create_user(
+        session: Session, email: str, password: str, phone: str, age: int, city: str, address: str
+) -> User:
+    user = User(email=email, password=password)
+    profile = Profile(user=user, phone=phone, age=age)
+    address = Address(user=user, city=city, address=address)
+
+    session.add_all((user, profile, address))
+    session.commit()
+
+    return user
 
 
 def generate_user(session: Session) -> User:
@@ -26,7 +35,72 @@ def generate_user(session: Session) -> User:
     return user
 
 
-def generate_purchase(session: Session):
+def update_or_create_user_address(session: Session, user: User, email: str, city: str, address: str) -> Address:
+    if len(user.addresses):
+        current_address = user.addresses[0]
+        current_address.city = city
+        current_address.address = address
+    else:
+        current_address = Address(user=user, city=city, address=address)
+
+    session.add(current_address)
+    session.commit()
+
+    return current_address
+
+
+def select_users_by_age(session: Session, age: str):
+    users = session.query(Profile).join(User).filter(Profile.age == age).all()
+    for user in users:
+        print(user.user.email)
+
+
+def create_product(session: Session, name: str, price: int, amount: int, comment: str) -> Product:
+    product = Product(name=name, price=price, amount=amount, comment=comment)
+
+    session.add(product)
+    session.commit()
+
+    return product
+
+
+def select_products(session: Session):
+    products = session.query(Product)
+    for product in products:
+        print(
+            f"Product name: {product.name}, "
+            f"Price: {product.price}, "
+            f"Amount: {product.amount}, "
+            f"Comment: {product.comment}"
+        )
+
+
+def update_product_by_id(
+        session: Session, product_id: int, new_name: str, new_price: int, new_amount: int, new_comment: str
+) -> Product:
+    session.query(Product).filter_by(id=product_id).update({
+        "name": new_name, "price": new_price, "amount": new_amount, "comment": new_comment
+    })
+
+    session.commit()
+
+
+def delete_product_by_id(session: Session, product_id: int):
+    session.query(Product).filter_by(id=product_id).delete()
+
+    session.commit()
+
+
+def product_purchase(session: Session, user_id: int, product_id: int, amount: int) -> Purchase:
+    purchase = Purchase(user_id=user_id, product_id=product_id, amount=amount)
+
+    session.add(purchase)
+    session.commit()
+
+    return purchase
+
+
+def generate_purchase(session: Session) -> Purchase:
     user = generate_user(session)
     product = Product(name=fake.company(), price=fake.pyint(min_value=20, max_value=200))
     purchase = Purchase(user=user, product=product, amount=fake.pyint(min_value=1, max_value=5))
@@ -34,19 +108,36 @@ def generate_purchase(session: Session):
     session.add_all((product, purchase))
     session.commit()
 
-
-def select_user_by_sum_of_purchase(sum_of_purchase: int):
-    users = current_session.query(Purchase).join(Product).join(User).filter(
-        Product.price * Purchase.amount > sum_of_purchase).all()
-    for user in users:
-        print(user.user.email)
+    return purchase
 
 
-def select_user_by_purchase_of_product():
-    users = current_session.query(Purchase).join(Product).join(User).filter(
-            and_(Product.name == input("Enter product for select: "), Purchase.amount >= 1)).all()
-    for user in users:
-        print(user.user.email)
+def select_user_purchases(session: Session, email: str):
+    user_purchases = session.query(Purchase).join(Product).join(User).filter(User.email == email).all()
+    for purchase in user_purchases:
+        print(
+            f"User: {purchase.user.email}, "
+            f"Product purchase name: {purchase.product.name}, "
+            f"Amount: {purchase.amount}, "
+            f"Comment: {purchase.comment}"
+        )
+
+
+def filter_users(session: Session):
+    while True:
+        choice = input("Perform a filter by sum of purchases [1] or purchases of product [2]: ")
+        if choice == "1":
+            sum_of_purchases = int(input("Enter sum of purchases to filter: "))
+            users = session.query(Purchase).join(Product).join(User).filter(
+                Product.price * Purchase.amount > sum_of_purchases).all()
+            for user in users:
+                print(user.user.email)
+        elif choice == "2":
+            users = session.query(Purchase).join(Product).join(User).filter(
+                and_(Product.name == input("Enter product to filter: "), Purchase.amount >= 1)).all()
+            for user in users:
+                print(user.user.email)
+        else:
+            break
 
 
 if __name__ == "__main__":
