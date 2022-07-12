@@ -7,7 +7,8 @@
 """
 
 from sqlalchemy.orm import sessionmaker, Session
-from models import Base, Product
+from sqlalchemy.sql import and_
+from models import Base, User, Product, Purchase
 from lesson_12.classwork.utils import setup_db_engine, create_database_if_not_exists
 
 
@@ -20,16 +21,69 @@ def create_product(session: Session, name: str, price: int, amount: int, comment
     return product
 
 
-def select_products():
-    all_products = current_session.query(Product)
-    for prod in all_products:
-        print(f"Name: {prod.name}, price: {prod.price}, amount: {prod.amount}, comment: {prod.comment}")
+def select_products(session: Session):
+    products = session.query(Product)
+    for product in products:
+        print(
+            f"Product name: {product.name}, "
+            f"Price: {product.price}, "
+            f"Amount: {product.amount}, "
+            f"Color: {product.comment}"
+        )
 
 
-def delete_product_by_id(session: Session, id_number: int):
-    current_session.query(Product).filter_by(id=id_number).delete()
+def update_product_by_id(
+        session: Session, product_id: int, new_name: str, new_price: int, new_amount: int, new_comment: str
+) -> Product:
+    session.query(Product).filter_by(id=product_id).update({
+        "name": new_name, "price": new_price, "amount": new_amount, "comment": new_comment
+    })
 
     session.commit()
+
+
+def delete_product_by_id(session: Session, product_id: int):
+    session.query(Product).filter_by(id=product_id).delete()
+
+    session.commit()
+
+
+def product_purchase(session: Session, user_id: int, product_id: int, amount: int) -> Purchase:
+    purchase = Purchase(user_id=user_id, product_id=product_id, amount=amount)
+
+    session.add(purchase)
+    session.commit()
+
+    return purchase
+
+
+def select_user_purchases(session: Session, email: str):
+    user_purchases = session.query(Purchase).join(Product).join(User).filter(User.email == email).all()
+    for purchase in user_purchases:
+        print(
+            f"User: {purchase.user.email}, "
+            f"Product purchase name: {purchase.product.name}, "
+            f"Amount: {purchase.amount}, "
+            f"Color: {purchase.product.comment}"
+        )
+
+
+def filter_users(session: Session):
+    while True:
+        choice = input("Perform a filter by sum of purchases [1] or purchases of product [2]: ")
+        if choice == "1":
+            sum_of_purchases = int(input("Enter sum of purchases to filter: "))
+            users = session.query(Purchase).join(Product).join(User).filter(
+                Product.price * Purchase.amount > sum_of_purchases).all()
+            for user in users:
+                print(user.user.email)
+        elif choice == "2":
+            users = session.query(Purchase).join(Product).join(User).filter(
+                and_(Product.name == input("Enter product to filter: "), Purchase.amount >= 1)).all()
+            for user in users:
+                print(user.user.email)
+        else:
+            break
 
 
 if __name__ == "__main__":
