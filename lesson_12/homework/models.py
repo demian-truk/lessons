@@ -35,7 +35,7 @@ class Product(Base):
 
 class Purchase(Base):
     __tablename__ = "purchase"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(ForeignKey("user.id"))
     product_id = Column(ForeignKey("product.id"))
     amount = Column(Integer)
