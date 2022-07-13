@@ -2,8 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 from sqlalchemy_utils import create_database, database_exists
 
-DB_USER = "enter_user_name"
-DB_PASSWORD = "enter_password"
+DB_USER = "osenstarosti"
+DB_PASSWORD = "neurosmetanka808"
 DB_NAME = "my_database"
 DB_ECHO = True
 
