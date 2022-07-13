@@ -1,19 +1,17 @@
-"""
-Добавить фильтрацию пользователей по купленным товарам.
-"""
-
+import logging
 from faker import Faker
 from sqlalchemy.sql import and_
 from sqlalchemy.orm import sessionmaker, Session
 from models import Base, User, Profile, Address, Product, Purchase
 from utils import setup_db_engine, create_database_if_not_exists
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 fake = Faker()
 
 
-def create_user(
-        session: Session, email: str, password: str, phone: str, age: int, city: str, address: str
-) -> User:
+def create_user(session: Session, email: str, password: str, phone: str, age: int, city: str, address: str) -> User:
     user = User(email=email, password=password)
     profile = Profile(user=user, phone=phone, age=age)
     address = Address(user=user, city=city, address=address)
@@ -49,10 +47,10 @@ def update_or_create_user_address(session: Session, user: User, email: str, city
     return current_address
 
 
-def select_users_by_age(session: Session, age: str):
+def select_users_by_age(session: Session, age: int):
     users = session.query(Profile).join(User).filter(Profile.age == age).all()
     for user in users:
-        print(user.user.email)
+        logger.info(user.user.email)
 
 
 def create_product(session: Session, name: str, price: int, amount: int, comment: str) -> Product:
@@ -67,7 +65,7 @@ def create_product(session: Session, name: str, price: int, amount: int, comment
 def select_products(session: Session):
     products = session.query(Product)
     for product in products:
-        print(
+        logger.info(
             f"Product name: {product.name}, "
             f"Price: {product.price}, "
             f"Amount: {product.amount}, "
@@ -77,7 +75,7 @@ def select_products(session: Session):
 
 def update_product_by_id(
         session: Session, product_id: int, new_name: str, new_price: int, new_amount: int, new_comment: str
-) -> Product:
+):
     session.query(Product).filter_by(id=product_id).update({
         "name": new_name, "price": new_price, "amount": new_amount, "comment": new_comment
     })
@@ -114,28 +112,36 @@ def generate_purchase(session: Session) -> Purchase:
 def select_user_purchases(session: Session, email: str):
     user_purchases = session.query(Purchase).join(Product).join(User).filter(User.email == email).all()
     for purchase in user_purchases:
-        print(
+        logger.info(
             f"User: {purchase.user.email}, "
             f"Product purchase name: {purchase.product.name}, "
-            f"Amount: {purchase.amount}, "
-            f"Comment: {purchase.comment}"
+            f"Amount: {purchase.amount}"
         )
 
 
 def filter_users(session: Session):
     while True:
-        choice = input("Perform a filter by sum of purchases [1] or purchases of product [2]: ")
+        choice = input(
+            "Perform a filter by: \
+            sum of purchase [1] or purchases of a specific product [2] or amount of product purchases [3]: "
+        )
         if choice == "1":
-            sum_of_purchases = int(input("Enter sum of purchases to filter: "))
+            sum_of_purchase = int(input("Enter sum of purchase to filter: "))
             users = session.query(Purchase).join(Product).join(User).filter(
-                Product.price * Purchase.amount > sum_of_purchases).all()
+                Product.price * Purchase.amount > sum_of_purchase).all()
             for user in users:
-                print(user.user.email)
+                logger.info(user.user.email)
         elif choice == "2":
             users = session.query(Purchase).join(Product).join(User).filter(
                 and_(Product.name == input("Enter product to filter: "), Purchase.amount >= 1)).all()
             for user in users:
-                print(user.user.email)
+                logger.info(user.user.email)
+        elif choice == "3":
+            amount_of_product_purchases = int(input("Enter amount of product purchases to filter: "))
+            users = session.query(Purchase).join(Product).join(User).filter(
+                Purchase.amount >= amount_of_product_purchases).all()
+            for user in users:
+                logger.info(user.user.email)
         else:
             break
 
