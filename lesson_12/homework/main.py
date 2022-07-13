@@ -34,7 +34,7 @@ def select_products(session: Session):
 
 def update_product_by_id(
         session: Session, product_id: int, new_name: str, new_price: int, new_amount: int, new_comment: str
-) -> Product:
+):
     session.query(Product).filter_by(id=product_id).update({
         "name": new_name, "price": new_price, "amount": new_amount, "comment": new_comment
     })
@@ -70,11 +70,11 @@ def select_user_purchases(session: Session, email: str):
 
 def filter_users(session: Session):
     while True:
-        choice = input("Perform a filter by sum of purchases [1] or purchases of product [2]: ")
+        choice = input("Perform a filter by sum of purchase [1] or purchases of a specific product [2]: ")
         if choice == "1":
-            sum_of_purchases = int(input("Enter sum of purchases to filter: "))
+            sum_of_purchase = int(input("Enter sum of purchase to filter: "))
             users = session.query(Purchase).join(Product).join(User).filter(
-                Product.price * Purchase.amount > sum_of_purchases).all()
+                Product.price * Purchase.amount > sum_of_purchase).all()
             for user in users:
                 print(user.user.email)
         elif choice == "2":
