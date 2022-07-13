@@ -11,6 +11,7 @@ class User(Base):
     email = Column(String)
     password = Column(String)
 
+    # create relations to other tables
     profile = relationship("Profile", back_populates="user", uselist=False)
     addresses = relationship("Address", back_populates="user")
     purchases = relationship("Purchase", back_populates="user")
@@ -22,6 +23,7 @@ class Profile(Base):
     phone = Column(String)
     age = Column(Integer)
 
+    # create relation to other table
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User", back_populates="profile")
 
@@ -32,6 +34,7 @@ class Address(Base):
     city = Column(String)
     address = Column(String)
 
+    # create relation to other table
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User", back_populates="addresses")
 
@@ -44,6 +47,7 @@ class Product(Base):
     amount = Column(Integer)
     comment = Column(String)
 
+    # create relation to other table
     purchases = relationship("Purchase", back_populates="product")
 
 
@@ -54,5 +58,6 @@ class Purchase(Base):
     product_id = Column(ForeignKey("product.id"))
     amount = Column(Integer)
 
+    # create relations to other tables
     user = relationship("User", back_populates="purchases")
     product = relationship("Product", back_populates="purchases")
