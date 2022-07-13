@@ -8,10 +8,12 @@ DB_NAME = "my_database"
 DB_ECHO = True
 
 
+# create database connection
 def setup_db_engine() -> Engine:
     return create_engine(f"postgresql://{DB_USER}:{DB_PASSWORD}@localhost/{DB_NAME}", echo=True)
 
 
+# create database if not exists
 def create_database_if_not_exists(engine: Engine) -> bool:
     if not database_exists(engine.url):
         create_database(engine.url)
