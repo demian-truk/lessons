@@ -18,9 +18,7 @@ from models import Base, User, Profile, Address
 from utils import setup_db_engine, create_database_if_not_exists
 
 
-def create_user(
-        session: Session, email: str, password: str, phone: str, age: str, city: str, address: str
-) -> User:
+def create_user(session: Session, email: str, password: str, phone: str, age: int, city: str, address: str) -> User:
     user = User(email=email, password=password)
     profile = Profile(user=user, phone=phone, age=age)
     address = Address(user=user, city=city, address=address)
@@ -45,7 +43,7 @@ def create_or_update_address(session: Session, user: User, city: str, address: s
     return current_address
 
 
-def select_users_by_age(session: Session, age: str):
+def select_users_by_age(session: Session, age: int):
     users = session.query(Profile).join(User).filter(Profile.age == age).all()
     for user in users:
         print(user.user.email)
