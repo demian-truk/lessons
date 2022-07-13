@@ -1,11 +1,6 @@
-"""
-Создать программу с пользовательским интерфейсом, включающую все возможные функции из текущего и прошлых занятий.
-Использовать тайпинг, логгеры и всё остальное.
-"""
-
 from sqlalchemy.orm import sessionmaker
 from models import Base, User
-from lesson_13.utils import setup_db_engine, create_database_if_not_exists
+from utils import setup_db_engine, create_database_if_not_exists
 from main import \
     create_user, \
     generate_user, \
@@ -31,9 +26,9 @@ TEMPLATE = """
     7. Update product
     8. Delete product
     9. Product purchase
-    10. Generate new random user and purchase (didn't work!)
+    10. Generate new random user and purchase (don't work!)
     11. Output user purchases
-    12. Filter users
+    12. Filter users purchases
 """
 
 
@@ -70,7 +65,7 @@ def user_interface():
             address = input("Enter address of user: ")
             update_or_create_user_address(session=current_session, user=user, email=email, city=city, address=address)
         elif user_choice == 4:
-            age = input("Enter age to select users: ")
+            age = int(input("Enter age to select users: "))
             select_users_by_age(session=current_session, age=age)
         elif user_choice == 5:
             print("Enter information to create a new product")
